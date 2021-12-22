@@ -15,13 +15,12 @@ public class PurchaseDao extends BaseDAO{
 	}
 //	����
 	public int insertPur(Purchase purchase) {
-		String sql="insert into tb_purchase values(?,?,?,?,?,?)";
+		String sql="insert into tb_purchase values(?,?,?,?,CURRENT_TIME,?)";
 		int res=super.update(sql, new Object[] {
 			0,
 			purchase.getBar_code(),
 			purchase.getPrice(),
 			purchase.getQuality(),
-			purchase.getTime(),
 			1
 		});
 		return res;

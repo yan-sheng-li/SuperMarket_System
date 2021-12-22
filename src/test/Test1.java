@@ -25,7 +25,9 @@ public class Test1 {
 		
 		StockDao stockDao=new StockDao();
 //		System.out.println(stockDao.selectAll());
-//		System.out.println(stockDao.insertStock(new Stock("1123","可乐",2,"百事","小",6.3)));
+//		System.out.println(stockDao.insertStock(new Stock("1123","鍙箰",2,"鐧句簨","灏�",6.3)));
+//		System.out.println(stockDao.getStock("1123"));
+		System.out.println(stockDao.updateQualityByBar_code("1124", 10));
 		
 		SellDao sellDao=new SellDao();
 //		System.out.println(sellDao.selectAll());

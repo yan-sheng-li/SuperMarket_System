@@ -13,7 +13,7 @@ public class StockDao extends BaseDAO{
 		return super.selectAll(sql, new Object[] {});
 	}
 	
-
+//	添加记录
 	public int insertStock(Stock stock) {
 		String sql="insert into tb_stock values(?,?,?,?,?,?)";
 		return super.update(sql, new Object[] {
@@ -25,7 +25,17 @@ public class StockDao extends BaseDAO{
 				stock.getRetail_price()
 		});
 	}
-
+//	根据条形码查找记录
+	public Stock getStock(String bar_code) {
+		String sql="select * from tb_stock where bar_code=?";
+		return super.select(sql, new Object[] {bar_code});
+	}
+	
+//	根据条形码修改数量
+	public int updateQualityByBar_code(String bar_code,int num) {
+		String sql="update tb_stock set stock_num=? where bar_code=?";
+		return super.update(sql, new Object[] {num,bar_code});
+	}
 	@Override
 	public Stock rowMapper(ResultSet rs) {
 		// TODO Auto-generated method stub

@@ -16,13 +16,13 @@ public class SellDao extends BaseDAO{
 //	Ôö
 	public int insertSell(Sell sell) {
 		String sql="INSERT into tb_sell\r\n"
-				+ "VALUES(?,?,?,?,?,?)";
+				+ "VALUES(?,?,?,?,?,CURRENT_TIME,?)";
 		int res=super.update(sql, new Object[] {
 				0,
 				sell.getBar_code(),
 				sell.getNum(),
 				sell.getSell_price(),
-				sell.getTime(),
+				sell.getTotal(),
 				1
 		});
 		return res;

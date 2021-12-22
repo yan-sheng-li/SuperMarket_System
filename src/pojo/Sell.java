@@ -7,6 +7,7 @@ public class Sell {
 	private String bar_code;
 	private int num;
 	private double sell_price;
+	private double total;
 	private Date time;
 	
 	public Sell() {
@@ -15,14 +16,36 @@ public class Sell {
 	
 	
 	
-	public Sell(int id, String bar_code, int num, double sell_price, Date time) {
+	
+
+
+
+	public Sell(int id, String bar_code, int num, double sell_price, double total, Date time) {
 		super();
 		this.id = id;
 		this.bar_code = bar_code;
 		this.num = num;
 		this.sell_price = sell_price;
+		this.total = total;
 		this.time = time;
 	}
+
+
+
+
+
+
+
+	public double getTotal() {
+		return total;
+	}
+
+
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
 
 
 

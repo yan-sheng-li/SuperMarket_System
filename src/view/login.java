@@ -12,6 +12,7 @@ import pojo.User;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JPasswordField;
@@ -76,12 +77,16 @@ public class Login extends JFrame {
 				UserDao userDao=new UserDao();
 				User user=userDao.selectUserByName(username);
 				if(user==null) {
-					jL1.setText("账号不存在！");
+					JOptionPane.showMessageDialog(null, "账号不存在！","提示",JOptionPane.INFORMATION_MESSAGE);
+					
 				}else {
 					if(!user.getPassword().equals(String.valueOf(password))) {
-						jL1.setText("账号或者密码错误！");
+						JOptionPane.showMessageDialog(null, "账号或者密码错误！","提示",JOptionPane.INFORMATION_MESSAGE);
 					}else {
-						System.out.println("登录成功！");
+						JOptionPane.showMessageDialog(null, "登录成功！","提示",JOptionPane.INFORMATION_MESSAGE);
+						dispose();
+						Main main=new Main();
+						main.setVisible(true);
 					}
 				}
 				
