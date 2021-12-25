@@ -46,7 +46,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
-		setTitle("@CSDN\u7F18\u5206\u951D\u5929\u7A7A(\u674E\u5EF6\u80DC)");
+		setTitle("登录入口");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -96,9 +96,9 @@ public class Login extends JFrame {
 		btnNewButton_1.setBounds(257, 195, 100, 25);
 		contentPane.add(btnNewButton_1);
 		
-		JLabel lblNewLabel = new JLabel("***\u7CFB\u7EDF");
+		JLabel lblNewLabel = new JLabel("超市信息管理系统");
 		lblNewLabel.setFont(new Font("����", Font.BOLD, 27));
-		lblNewLabel.setBounds(157, 10, 126, 46);
+		lblNewLabel.setBounds(120, 10, 300, 46);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("\u8D26\u53F7:");

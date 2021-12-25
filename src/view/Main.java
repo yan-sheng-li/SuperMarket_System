@@ -23,24 +23,11 @@ public class Main extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Main frame = new Main();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
 	public Main() {
-		setTitle("@CSDN\u7F18\u5206\u951D\u5929\u7A7A--\u8D85\u5E02\u7BA1\u7406\u7CFB\u7EDF");
+		setTitle("超市信息管理系统");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 624, 391);
 		contentPane = new JPanel();
