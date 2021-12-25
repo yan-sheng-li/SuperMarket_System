@@ -15,10 +15,6 @@ public class Sell {
 	}
 	
 	
-	
-	
-
-
 
 	public Sell(int id, String bar_code, int num, double sell_price, double total, Date time) {
 		super();
@@ -87,14 +83,14 @@ public class Sell {
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "Sell [id=" + id + ", bar_code=" + bar_code + ", num=" + num + ", sell_price=" + sell_price + ", time="
-				+ time + "]";
+		return "Sell [id=" + id + ", bar_code=" + bar_code + ", num=" + num + ", sell_price=" + sell_price + ", total="
+				+ total + ", time=" + time + "]";
 	}
-	
 
-	
+
 	
 
 }

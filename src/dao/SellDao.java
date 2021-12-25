@@ -44,11 +44,17 @@ public class SellDao extends BaseDAO{
 		});
 	}
 	
-//	查
+//	根据条形码查询
 	public List<Sell> selectByBarCdoe(String bar_code){
 		String sql="select * from tb_sell where del!=0 and bar_code=?";
 		return super.selectAll(sql, new Object[] {bar_code});
 	}
+	
+//	根据下单时间查询
+//	public List<Sell> selectByTime(String time){
+//		String sql="select * from tb_sell where del!=0 and time like ?";
+//		return super.selectAll(sql, new Object[] {time+'%'});
+//	}
 	
 	
 	
@@ -62,7 +68,8 @@ public class SellDao extends BaseDAO{
 			sell.setBar_code(rs.getString(2));
 			sell.setNum(rs.getInt(3));
 			sell.setSell_price(rs.getDouble(4));
-			sell.setTime(rs.getDate(5));
+			sell.setTotal(rs.getDouble(5));
+			sell.setTime(rs.getDate(6));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

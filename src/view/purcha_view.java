@@ -7,6 +7,9 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
 
 import dao.PurchaseDao;
 import dao.StockDao;
@@ -122,6 +125,29 @@ public class Purcha_view extends JPanel {
 		jt1.setBounds(111, 36, 109, 21);
 		add(jt1);
 		
+		Document document=jt1.getDocument();
+		document.addDocumentListener(new DocumentListener() {
+			
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				showGood();
+				
+			}
+			
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				showGood();
+			}
+			
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		jt2 = new JTextField();
 		jt2.setFont(new Font("宋体", Font.PLAIN, 15));
 		jt2.setColumns(10);
@@ -165,6 +191,8 @@ public class Purcha_view extends JPanel {
 		lblNewLabel_2_2.setFont(new Font("宋体", Font.PLAIN, 15));
 		lblNewLabel_2_2.setBounds(70, 179, 178, 29);
 		add(lblNewLabel_2_2);
+		
+//		
 
 	}
 	
@@ -177,5 +205,19 @@ public class Purcha_view extends JPanel {
 		jt5.setText("");
 		jt6.setText("");
 		jt7.setText("");
+	}
+//	根据用户输入的条形码查询是否有库存，有的话显示出信息
+	public void showGood() {
+		String bar_code=jt1.getText();
+		Stock stock=stockDao.getStock(bar_code);
+		if (stock!=null) {
+			jt2.setText(stock.getName());
+			jt3.setText(stock.getManufac());
+			jt4.setText(stock.getSpecifications());
+		}else {
+			jt2.setText("");
+			jt3.setText("");
+			jt4.setText("");
+		}
 	}
 }

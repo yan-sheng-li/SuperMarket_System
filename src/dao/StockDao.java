@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import pojo.Purchase;
 import pojo.Stock;
 
 public class StockDao extends BaseDAO{
@@ -36,6 +37,21 @@ public class StockDao extends BaseDAO{
 		String sql="update tb_stock set stock_num=? where bar_code=?";
 		return super.update(sql, new Object[] {num,bar_code});
 	}
+//	根据名字查询
+	public List<Stock> selectByName(String name){
+		String sql="SELECT * from tb_stock\r\n"
+				+ "WHERE name LIKE ? ";
+		return super.selectAll(sql, new Object[] {name+"%"});
+	}
+	
+// 根据条形码查询
+	public List<Stock> selectByBarcode(String bar_code){
+		String sql="SELECT * from tb_stock\r\n"
+				+ "WHERE bar_code LIKE ? ";
+		return super.selectAll(sql, new Object[] {bar_code});
+	}
+	
+	
 	@Override
 	public Stock rowMapper(ResultSet rs) {
 		// TODO Auto-generated method stub

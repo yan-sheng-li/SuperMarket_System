@@ -22,12 +22,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Sell_view extends JPanel {
-	private JTextField jt1;
+	private JTextField jt5;
 	private JTextField jt2;
 	private JTextField jt3;
 	private JTextField jt4;
 	private StockDao stockDao=new StockDao();
 	private SellDao sellDao=new SellDao();
+	private JTextField jt1;
 
 	/**
 	 * Create the panel.
@@ -38,14 +39,14 @@ public class Sell_view extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("\u5546\u54C1\u6761\u5F62\u7801\uFF1A");
 		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 15));
-		lblNewLabel.setBounds(65, 58, 91, 29);
+		lblNewLabel.setBounds(72, 22, 91, 29);
 		add(lblNewLabel);
 		
-		jt1 = new JTextField();
-		jt1.setFont(new Font("宋体", Font.PLAIN, 15));
-		jt1.setBounds(166, 61, 203, 21);
-		add(jt1);
-		jt1.setColumns(10);
+		jt5 = new JTextField();
+		jt5.setFont(new Font("宋体", Font.PLAIN, 15));
+		jt5.setBounds(166, 25, 203, 21);
+		add(jt5);
+		jt5.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("\u6570\u91CF\uFF1A");
 		lblNewLabel_1.setFont(new Font("宋体", Font.PLAIN, 15));
@@ -84,7 +85,7 @@ public class Sell_view extends JPanel {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				获取文本框的输入
-				String bar_code=jt1.getText();
+				String bar_code=jt5.getText();
 				String num=jt2.getText();
 				String price=jt3.getText();
 //				判断库存是否为0
@@ -128,7 +129,7 @@ public class Sell_view extends JPanel {
 		jt4.setColumns(10);
 		jt4.setBounds(166, 195, 203, 21);
 //		零售价根据条形码自动查询数据库自动显示
-		Document document=jt1.getDocument();
+		Document document=jt5.getDocument();
 		document.addDocumentListener(new DocumentListener() {
 			
 			@Override
@@ -175,21 +176,34 @@ public class Sell_view extends JPanel {
 		lblNewLabel_2_1.setFont(new Font("宋体", Font.PLAIN, 15));
 		lblNewLabel_2_1.setBounds(111, 192, 91, 29);
 		add(lblNewLabel_2_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("\u5546\u54C1\u540D\uFF1A");
+		lblNewLabel_3.setFont(new Font("宋体", Font.PLAIN, 15));
+		lblNewLabel_3.setBounds(97, 64, 91, 29);
+		add(lblNewLabel_3);
+		
+		jt1 = new JTextField();
+		jt1.setFont(new Font("宋体", Font.PLAIN, 15));
+		jt1.setColumns(10);
+		jt1.setBounds(166, 67, 203, 21);
+		add(jt1);
 
 	}
 //	清空输入框
 	public void clear() {
-		jt1.setText("");
+		jt5.setText("");
 		jt2.setText("");
 		jt3.setText("");
 		jt4.setText("");
+		jt1.setText("");
 	}
 //	自动显示当前存在商品的零售价
 	public void findPriceByBar_code() {
-		String bar_code=jt1.getText();
+		String bar_code=jt5.getText();
 		Stock stock=stockDao.getStock(bar_code);
 		if (stock!=null) {
 			jt3.setText(Double.toString(stock.getRetail_price()));
+			jt1.setText(stock.getName());
 		}
 	}
 //	获取零售价和数量自动计算总价
@@ -203,6 +217,4 @@ public class Sell_view extends JPanel {
 			jt4.setText("");
 		}
 	}
-	
-	
 }
